@@ -9,7 +9,7 @@ export const themeModes = {
 const themeConfigs = {
   custom: ({ mode }) => {
     const customPalette =
-      mode === themeConfigs.dark
+      mode === themeModes.dark
         ? {
             primary: {
               main: "#ff0000",
@@ -21,13 +21,12 @@ const themeConfigs = {
             },
             background: {
               default: "#000000",
-              contrastText: "#131313",
+              paper: "#131313",
             },
           }
         : {
             primary: {
               main: "#ff0000",
-              contrastText: "#ffffff",
             },
             secondary: {
               main: "#f44336",
@@ -39,8 +38,8 @@ const themeConfigs = {
 
     return createTheme({
       palette: {
-        ...mode,
-        customPalette,
+        mode,
+        ...customPalette,
       },
       components: {
         MuiButton: {
