@@ -17,6 +17,9 @@ const MainLayout = () => {
         </Box>
         {/* main */}
       </Box>
+
+      {/* footer */}
+      {/* footer */}
     </>
   );
 };
