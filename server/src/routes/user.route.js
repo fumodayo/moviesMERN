@@ -23,12 +23,12 @@ router.post(
     .exists()
     .withMessage("password is required")
     .isLength({ min: 8 })
-    .withMessage("password minium 8 characters"),
+    .withMessage("password minimum 8 characters"),
   body("confirmPassword")
     .exists()
     .withMessage("confirmPassword is required")
     .isLength({ min: 8 })
-    .withMessage("confirmPassword minium 8 characters")
+    .withMessage("confirmPassword minimum 8 characters")
     .custom((value, { req }) => {
       if (value !== req.body.password)
         throw new Error("confirmPassword not match");
@@ -38,7 +38,7 @@ router.post(
     .exists()
     .withMessage("displayName is required")
     .isLength({ min: 8 })
-    .withMessage("displayName minium 8 characters"),
+    .withMessage("displayName minimum 8 characters"),
   requestHandler.validate,
   userController.signup
 );
@@ -66,19 +66,19 @@ router.put(
     .exists()
     .withMessage("password is required")
     .isLength({ min: 8 })
-    .withMessage("password minium 8 characters"),
+    .withMessage("password minimum 8 characters"),
   body("newPassword")
     .exists()
     .withMessage("newPassword is required")
     .isLength({ min: 8 })
-    .withMessage("newPassword minium 8 characters"),
+    .withMessage("newPassword minimum 8 characters"),
   body("confirmNewPassword")
     .exists()
     .withMessage("confirmNewPassword is required")
     .isLength({ min: 8 })
-    .withMessage("confirmNewPassword minium 8 characters")
+    .withMessage("confirmNewPassword minimum 8 characters")
     .custom((value, { req }) => {
-      if (value !== req.body.password)
+      if (value !== req.body.newPassword)
         throw new Error("confirmNewPassword not match");
       return true;
     }),
@@ -94,12 +94,12 @@ router.get(
   favoriteController.getFavoritesOfUser
 );
 
-router.get(
+router.post(
   "/favorites",
   tokenMiddleware.auth,
-  body("mediatype")
+  body("mediaType")
     .exists()
-    .withMessage("mediatype is required")
+    .withMessage("mediaType is required")
     .custom((type) => ["movie", "tv"].includes(type))
     .withMessage("mediaType invalid"),
   body("mediaId")
