@@ -24,6 +24,7 @@ import { addFavorite, removeFavorite } from "../redux/features/userSlice";
 import CastSlide from "../components/common/CastSlide";
 import MediaVideosSlide from "../components/common/MediaVideosSlide";
 import BackdropSlide from "../components/common/BackdropSlide";
+import PosterSlide from "../components/common/PosterSlide";
 
 const MediaDetail = () => {
   const { mediaType, mediaId } = useParams();
@@ -250,13 +251,27 @@ const MediaDetail = () => {
         </div>
         {/* media videos */}
 
-        {/*media backdrop */}
+        {/* media backdrop */}
         {media.images.backdrops.length > 0 && (
           <Container header="backdrops">
             <BackdropSlide backdrops={media.images.backdrops} />
           </Container>
         )}
-        {/*media backdrop */}
+        {/* media backdrop */}
+
+        {/* media posters */}
+        {media.images.posters.length > 0 && (
+          <Container header="posters">
+            <PosterSlide posters={media.images.posters} />
+          </Container>
+        )}
+        {/* media posters */}
+
+        {/* media reviews */}
+        {/* media reviews */}
+
+        {/* media recommendation */}
+        {/* media recommendation */}
       </Box>
     </>
   ) : null;
