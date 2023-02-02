@@ -45,7 +45,7 @@ const MediaItem = ({ media, mediaType }) => {
     <Link
       to={
         mediaType !== "people"
-          ? routesGen.mediaDetail(mediaType, media.id || media.mediaid)
+          ? routesGen.mediaDetail(mediaType, media.id || media.mediaId)
           : routesGen.person(media.id)
       }
     >
@@ -61,7 +61,7 @@ const MediaItem = ({ media, mediaType }) => {
         {/* movie or tv item */}
         {mediaType !== "people" && (
           <>
-            {favoriteUtils.check({ listFavorites, mediaId: media.id }) && (
+            {favoriteUtils.check({ listFavorites, mediaId: media.id || media._id }) && (
               <FavoriteIcon
                 color="primary"
                 sx={{
